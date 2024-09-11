@@ -15,8 +15,13 @@ app.use(express.json());
 // Connect to the DB
 await connectDB();
 
+/* TODO: Enable cors or limiter
+ app.use(cors({
+  origin: 'https://touchMeAndIllSue.com', // Only allow your frontend URL
+  methods: 'GET,POST,PUT,DELETE',
+})); */
 
-// Get all posts (public) TODO: Enable cors or limiter 
+// Get all posts (public)  
 app.get('/public', async (req: Request, res: Response) => {
   try {
     const blogs = await Blog.find().sort({ createdAt: -1 }); // Sort by newest
