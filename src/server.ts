@@ -1,6 +1,6 @@
 import express from "express";
 import { Request, Response } from "express";
-import mongoose from "mongoose";
+import blogRoutes from "./routes/blogRoutes.js"
 import dotenv from 'dotenv';
 import authMiddleware from "./middlewares/authMiddleware.js"; 
 import authRoutes from './routes/authRoutes.js';
@@ -24,9 +24,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Protected Admin route
-app.post('/admin/blogs', authMiddleware, (req: Request, res: Response) => {
-    res.send("Admin blog management route");
-});
+app.use('/admin/blogs', blogRoutes);
+
 
 // Listen
 app.listen(PORT, () => {
