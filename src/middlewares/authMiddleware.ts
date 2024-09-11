@@ -10,6 +10,7 @@ const authMiddleware = (req: AuthRequest, res: Response, next: NextFunction) => 
   if (!token) {
     return res.status(401).json({ message: 'No token, authorization denied' });
   }
+  if (req.body.role !== 'admin') return res.status(403).json({ message: 'Access denied. Insufficient permissions.' });
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!);
