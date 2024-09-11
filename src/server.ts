@@ -3,7 +3,8 @@ import { Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import authMiddleware from "./middlewares/authMiddleware.js"; 
-import authRoutes from './routes/authRoutes.js'; 
+import authRoutes from './routes/authRoutes.js';
+import connectDB from "./config/db.js"; 
 
 dotenv.config();
 
@@ -12,14 +13,6 @@ const app = express();
 app.use(express.json());
 
 // Connect to the DB
-async function connectDB() {
-    try {
-        await mongoose.connect(process.env.MONGO_URI!);
-        console.log("MongoDB connected");
-    } catch (err) {
-        console.error("MongoDB connection failed", err);
-    }
-}
 await connectDB();
 
 // Use the auth routes for registration and login
