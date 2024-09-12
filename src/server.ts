@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 
 // Connect to the DB
-await connectDB();
+connectDB();
 
 /* TODO: Enable cors or limiter
  app.use(cors({
