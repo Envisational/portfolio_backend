@@ -12,7 +12,11 @@ const app = express();
 app.use(express.json());
 
 // Connect to the DB
-connectDB();
+try {
+  connectDB();
+} catch (err) {
+  console.log(err);
+}
 
 /* TODO: Enable cors or limiter
  app.use(cors({
@@ -35,3 +39,5 @@ app.use('/admin/blogs', blogRoutes);
 app.listen(PORT, () => {
     console.log(`App is running on PORT ${PORT}`);
 });
+
+export default app;
