@@ -16,12 +16,12 @@ export const getPublicBlogs = async (req: Request, res: Response) => {
 
 // Create a new blog post (admin)
 export const createBlog = async (req: AuthRequest, res: Response) => {
-    const {title, content} = req.body;
+    const {title, content, author} = req.body;
     try {
         const blog = new Blog({
             title, 
             content,
-            author: req.user.userId
+            author,
         });
 
         await blog.save();
