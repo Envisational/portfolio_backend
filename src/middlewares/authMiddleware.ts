@@ -6,6 +6,7 @@ export interface AuthRequest extends Request {
   user?: any;
 }
 
+// Admin only right now
 const authMiddleware = async (req: AuthRequest, res: Response, next: NextFunction) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
   if (!token) {

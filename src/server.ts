@@ -2,7 +2,8 @@ import express from "express";
 import blogRoutes from "./routes/blogRoutes.js"
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes.js';
-import connectDB from "./config/db.js"; 
+import connectDB from "./config/db.js";
+import cors from "cors"; 
 
 
 dotenv.config();
@@ -18,11 +19,10 @@ try {
   console.log(err);
 }
 
-/* TODO: Enable cors or limiter
+
  app.use(cors({
-  origin: 'https://touchMeAndIllSue.com', // Only allow your frontend URL
-  methods: 'GET,POST,PUT,DELETE',
-})); */
+  origin: 'http://localhost:3000',
+ })); 
 
 // Get all posts (public)  
 app.use('/public', blogRoutes)

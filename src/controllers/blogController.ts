@@ -9,7 +9,7 @@ export const getPublicBlogs = async (req: Request, res: Response) => {
       const blogs = await Blog.find().sort({ createdAt: -1 });
       res.status(200).json(blogs);
     } catch (error) {
-      res.status(500).json({ message: 'Server error', error });
+      res.status(500).json({ message: 'Failed to fetch blogs', error });
     }
   };
   
